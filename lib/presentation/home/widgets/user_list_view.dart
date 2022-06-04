@@ -13,16 +13,16 @@ class UserListView extends StatefulWidget {
 }
 
 class _UserListViewState extends State<UserListView> {
-  late final TextEditingController _searchController;
-  late List<User> _filteredUsers;
+  late final TextEditingController searchController;
+  late List<User> filteredUsers;
 
   @override
   void initState() {
     super.initState();
-    _filteredUsers = widget.users;
+    filteredUsers = widget.users;
 
-    _searchController = TextEditingController();
-    _searchController.addListener(_filterUsers);
+    searchController = TextEditingController();
+    searchController.addListener(filterUsers);
   }
 
   @override
@@ -30,24 +30,24 @@ class _UserListViewState extends State<UserListView> {
     return Column(
       children: [
         TextFormField(
-          controller: _searchController,
+          controller: searchController,
           key: const Key('search_field'),
           decoration: InputDecoration(
             labelText: 'Search',
             prefixIcon: const Icon(Icons.search),
-            suffixIcon: _searchController.text.isNotEmpty
+            suffixIcon: searchController.text.isNotEmpty
                 ? ClearSearchIconButton(
-                    textController: _searchController,
+                    textController: searchController,
                   )
                 : const SizedBox(),
           ),
         ),
-        if (_filteredUsers.isNotEmpty) ...[
+        if (filteredUsers.isNotEmpty) ...[
           Expanded(
             child: ListView.builder(
-              itemCount: _filteredUsers.length,
+              itemCount: filteredUsers.length,
               itemBuilder: (_, index) => UserTile(
-                user: _filteredUsers[index],
+                user: filteredUsers[index],
               ),
             ),
           ),
@@ -62,13 +62,13 @@ class _UserListViewState extends State<UserListView> {
     );
   }
 
-  void _filterUsers() => setState(
+  void filterUsers() => setState(
         () {
-          _filteredUsers = widget.users
+          filteredUsers = widget.users
               .where(
                 (user) => user.name
                     .toLowerCase()
-                    .contains(_searchController.text.toLowerCase()),
+                    .contains(searchController.text.toLowerCase()),
               )
               .toList();
         },

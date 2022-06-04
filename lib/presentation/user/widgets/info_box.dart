@@ -19,7 +19,7 @@ class InfoBox extends StatelessWidget {
         boxShadow: const [
           BoxShadow(blurRadius: 4, color: Colors.black12),
         ],
-        color: kWhite,
+        color: white,
         border: Border.all(
           color: Colors.black12,
           width: 1,

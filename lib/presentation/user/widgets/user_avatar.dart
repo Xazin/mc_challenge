@@ -19,7 +19,7 @@ class UserAvatar extends StatelessWidget {
         child: Text(
           name.substring(0, 2),
           style: const TextStyle(
-            color: kWhite,
+            color: white,
             fontSize: 36.0,
           ),
         ),

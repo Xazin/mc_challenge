@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mc_challenge/presentation/theme/constants.dart';
 
 final appTheme = ThemeData(
-  scaffoldBackgroundColor: kWhite,
+  scaffoldBackgroundColor: white,
   brightness: Brightness.light,
   primarySwatch: MaterialColor(
-    kPrimaryColor.value,
+    primaryColor.value,
     const {
       50: Color(0xFFd40018),
       100: Color(0xFFbc0016),
@@ -20,9 +20,9 @@ final appTheme = ThemeData(
     },
   ),
   appBarTheme: const AppBarTheme(
-    backgroundColor: kPrimaryColor,
+    backgroundColor: primaryColor,
     titleTextStyle: TextStyle(
-      color: kWhite,
+      color: white,
       fontSize: 20,
       fontWeight: FontWeight.w700,
     ),

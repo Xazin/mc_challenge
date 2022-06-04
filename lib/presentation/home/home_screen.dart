@@ -17,13 +17,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final UserRepository _userRepository;
+  late final UserRepository userRepository;
 
   @override
   void initState() {
     super.initState();
     // TODO: would not expose this to Presentation layer normally (rather in a BLOC)
-    _userRepository = UserRepository(http.Client());
+    userRepository = UserRepository(http.Client());
   }
 
   @override
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Browse Users'),
       ),
       body: FutureBuilder(
-        future: _userRepository.getUsers(),
+        future: userRepository.getUsers(),
         builder:
             (context, AsyncSnapshot<Either<UserFailure, List<User>>> snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {

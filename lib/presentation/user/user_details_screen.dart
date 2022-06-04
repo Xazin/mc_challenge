@@ -12,7 +12,7 @@ class UserDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: kWhite),
+        iconTheme: const IconThemeData(color: white),
         title: Text(user.name),
       ),
       body: SafeArea(
@@ -34,7 +34,7 @@ class UserDetailsScreen extends StatelessWidget {
                         Text(
                           user.name,
                           style: const TextStyle(
-                            color: Colors.black,
+                            color: secondaryColor,
                             fontSize: 24,
                             fontWeight: FontWeight.w500,
                           ),
@@ -43,7 +43,7 @@ class UserDetailsScreen extends StatelessWidget {
                         Text(
                           user.company.name,
                           style: const TextStyle(
-                            color: Colors.black87,
+                            color: secondaryColor,
                             fontSize: 16,
                           ),
                         ),
