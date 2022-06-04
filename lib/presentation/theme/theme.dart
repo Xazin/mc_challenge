@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mc_challenge/presentation/theme/constants.dart';
 
 final appTheme = ThemeData(
-  scaffoldBackgroundColor: kScaffoldColor,
+  scaffoldBackgroundColor: kWhite,
   brightness: Brightness.light,
   primarySwatch: MaterialColor(
     kPrimaryColor.value,

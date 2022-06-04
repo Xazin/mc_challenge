@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mc_challenge/infrastructure/color_generator.dart';
+import 'package:mc_challenge/presentation/theme/constants.dart';
 
 class UserAvatar extends StatelessWidget {
   final String name;
@@ -18,7 +19,7 @@ class UserAvatar extends StatelessWidget {
         child: Text(
           name.substring(0, 2),
           style: const TextStyle(
-            color: Colors.white,
+            color: kWhite,
             fontSize: 36.0,
           ),
         ),

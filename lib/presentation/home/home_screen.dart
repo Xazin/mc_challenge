@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:mc_challenge/common/types/either.dart';
 import 'package:mc_challenge/domain/user/user.dart';
+import 'package:mc_challenge/domain/user/user_failure.dart';
 import 'package:mc_challenge/infrastructure/user_repository.dart';
 import 'package:mc_challenge/presentation/home/widgets/user_list_view.dart';
 
@@ -33,7 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: FutureBuilder(
         future: _userRepository.getUsers(),
-        builder: (context, AsyncSnapshot<Either<String, List<User>>> snapshot) {
+        builder:
+            (context, AsyncSnapshot<Either<UserFailure, List<User>>> snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
             return const Center(
               child: SizedBox(
@@ -46,12 +48,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
           if (!snapshot.hasData) {
             return const Center(
-              child: Text('We did not find any users!, try again later!'),
+              child: Text('We did not find any users, try again later!'),
             );
           }
 
           return snapshot.data!.fold(
-            (error) => Center(child: Text(error)),
+            (failure) => Center(child: Text(failure.message)),
             (users) => UserListView(users: users),
           );
         },

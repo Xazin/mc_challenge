@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mc_challenge/domain/user/user.dart';
 import 'package:mc_challenge/presentation/home/widgets/clear_search_icon_button.dart';
-import 'package:mc_challenge/presentation/user/widgets/user_tile.dart';
+import 'package:mc_challenge/presentation/home/widgets/user_tile.dart';
 
 class UserListView extends StatefulWidget {
   final List<User> users;
@@ -14,14 +14,14 @@ class UserListView extends StatefulWidget {
 
 class _UserListViewState extends State<UserListView> {
   late final TextEditingController _searchController;
-  List<User> _filteredUsers = [];
+  late List<User> _filteredUsers;
 
   @override
   void initState() {
     super.initState();
-    _searchController = TextEditingController();
     _filteredUsers = widget.users;
 
+    _searchController = TextEditingController();
     _searchController.addListener(_filterUsers);
   }
 
@@ -54,7 +54,7 @@ class _UserListViewState extends State<UserListView> {
         ] else ...[
           const Expanded(
             child: Center(
-              child: Text('No users found!'),
+              child: Text('No users were found, try another search term!'),
             ),
           ),
         ],

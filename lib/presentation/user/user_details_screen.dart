@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mc_challenge/domain/user/user.dart';
+import 'package:mc_challenge/presentation/theme/constants.dart';
 import 'package:mc_challenge/presentation/user/widgets/info_box.dart';
 import 'package:mc_challenge/presentation/user/widgets/user_avatar.dart';
 
@@ -11,16 +12,8 @@ class UserDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-        title: Text(
-          user.name,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+        iconTheme: const IconThemeData(color: kWhite),
+        title: Text(user.name),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -61,17 +54,17 @@ class UserDetailsScreen extends StatelessWidget {
                 const SizedBox(height: 30),
                 InfoBox(
                   title: 'Personal Information',
-                  infos: user.toInfo(),
+                  infos: user.toInfos(),
                 ),
                 const SizedBox(height: 15),
                 InfoBox(
                   title: 'Address Information',
-                  infos: user.address.toInfo(),
+                  infos: user.address.toInfos(),
                 ),
                 const SizedBox(height: 15),
                 InfoBox(
                   title: 'Professional Information',
-                  infos: user.company.toInfo(),
+                  infos: user.company.toInfos(),
                 ),
               ],
             ),

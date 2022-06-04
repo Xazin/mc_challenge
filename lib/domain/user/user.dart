@@ -29,7 +29,7 @@ class User {
         company: Company.fromJson(json['company']),
       );
 
-  List<Info> toInfo() => [
+  List<Info> toInfos() => [
         Info(label: 'Email', text: email),
         Info(label: 'Phone', text: phone),
         Info(label: 'Website', text: website),
@@ -41,14 +41,14 @@ class Address {
   final String suite;
   final String city;
   final String zipcode;
-  final Geo geo;
+  final Geolocation geolocation;
 
   Address({
     required this.street,
     required this.suite,
     required this.city,
     required this.zipcode,
-    required this.geo,
+    required this.geolocation,
   });
 
   static Address fromJson(Map<String, dynamic> json) => Address(
@@ -56,33 +56,33 @@ class Address {
         suite: json['suite'],
         city: json['city'],
         zipcode: json['zipcode'],
-        geo: Geo.fromJson(json['geo']),
+        geolocation: Geolocation.fromJson(json['geo']),
       );
 
-  List<Info> toInfo() => [
+  List<Info> toInfos() => [
         Info(label: 'City', text: city),
         Info(label: 'Street', text: street),
         Info(label: 'Suite', text: suite),
         Info(label: 'Zipcode', text: zipcode),
-        ...geo.toInfo(),
+        ...geolocation.toInfos(),
       ];
 }
 
-class Geo {
+class Geolocation {
   final String lat;
   final String lng;
 
-  Geo({
+  Geolocation({
     required this.lat,
     required this.lng,
   });
 
-  static Geo fromJson(Map<String, dynamic> json) => Geo(
+  static Geolocation fromJson(Map<String, dynamic> json) => Geolocation(
         lat: json['lat'],
         lng: json['lng'],
       );
 
-  List<Info> toInfo() => [
+  List<Info> toInfos() => [
         Info(label: 'Latitude', text: lat),
         Info(label: 'Longitude', text: lng),
       ];
@@ -105,7 +105,7 @@ class Company {
         bs: json['bs'],
       );
 
-  List<Info> toInfo() => [
+  List<Info> toInfos() => [
         Info(label: 'Company Name', text: name),
         Info(label: 'Company Catchphrase', text: catchPhrase),
         Info(label: 'Business', text: bs),

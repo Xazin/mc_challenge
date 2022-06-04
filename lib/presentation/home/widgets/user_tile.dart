@@ -15,6 +15,7 @@ class UserTile extends StatelessWidget {
     return ListTile(
       title: Text(user.name),
       subtitle: Text(user.company.name),
+      trailing: const Icon(Icons.arrow_forward_ios),
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(

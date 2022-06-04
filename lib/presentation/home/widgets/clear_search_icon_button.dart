@@ -10,14 +10,10 @@ class ClearSearchIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Tooltip(
       message: 'Clear search',
-      child: Material(
-        color: Colors.transparent,
+      child: InkWell(
         borderRadius: BorderRadius.circular(30),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(30),
-          onTap: () => textController.clear(),
-          child: const Icon(Icons.clear),
-        ),
+        onTap: () => textController.clear(),
+        child: const Icon(Icons.clear),
       ),
     );
   }
