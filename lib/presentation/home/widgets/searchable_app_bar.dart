@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mc_challenge/presentation/home/widgets/app_bar_icon_button.dart';
+import 'package:mc_challenge/presentation/theme/constants.dart';
 
 /// [SearchableAppBar] return a SliverAppBar with a search
-/// action, that when enabled will show a [TextField],
-/// the value of the TextField will be sent back through a
-/// callback function.
+/// action, that when toggled will show a [TextField].
+///
 class SearchableAppBar extends StatefulWidget {
   final TextEditingController searchController;
 
@@ -25,14 +26,21 @@ class _SearchableAppBarState extends State<SearchableAppBar> {
       title: isSearching
           ? TextField(
               controller: widget.searchController,
-              decoration: const InputDecoration(
+              style: const TextStyle(
+                fontSize: 20.0,
+                color: white,
+              ),
+              cursorColor: white,
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 5.0),
                 hintText: 'Search',
                 border: InputBorder.none,
+                hintStyle: TextStyle(color: white.withAlpha(155)),
               ),
             )
-          : const Text('Browse Users'),
+          : const Text('Browse users'),
       leading: isSearching
-          ? IconButton(
+          ? AppBarIconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: toggleSearch,
             )
@@ -41,11 +49,11 @@ class _SearchableAppBarState extends State<SearchableAppBar> {
       snap: true,
       actions: [
         isSearching
-            ? IconButton(
+            ? AppBarIconButton(
                 icon: const Icon(Icons.clear),
                 onPressed: clearSearch,
               )
-            : IconButton(
+            : AppBarIconButton(
                 icon: const Icon(Icons.search),
                 onPressed: toggleSearch,
               ),
