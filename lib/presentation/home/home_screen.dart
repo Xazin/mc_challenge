@@ -43,13 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (context,
                   AsyncSnapshot<Either<UserFailure, List<User>>> snapshot) {
                 if (snapshot.connectionState != ConnectionState.done) {
-                  return const Center(
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
+                  return const LinearProgressIndicator();
                 }
 
                 if (!snapshot.hasData) {
